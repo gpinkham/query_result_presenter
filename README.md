@@ -1,5 +1,7 @@
 # QueryResultPresenter
 
+[![Code Climate](https://codeclimate.com/github/paperlesspost/query_result_presenter.png)](https://codeclimate.com/github/paperlesspost/query_result_presenter)
+
 This gem helps you work with query results. It uses the presenter
 pattern, so it adds some additional methods and delegates to the
 original result for anything it doesn't recognize.
