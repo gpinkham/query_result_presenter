@@ -73,10 +73,14 @@ module QueryResultPresenter
       @result.count
     end
 
+    # Will delegate to the underlying object if a method can't be found
     def method_missing(method, *args, &block)
       @result.send(method, *args, &block)
     end
 
+    # Will be true if either this class or the underlying object
+    # responds to a method, false otherwise
+    # @return [Boolean]
     def respond_to?(method, include_private = false)
       super || @result.respond_to?(method, include_private)
     end

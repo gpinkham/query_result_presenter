@@ -2,7 +2,7 @@ require 'test_helper'
 
 class QueryResultPresenterTest < Test::Unit::TestCase
   context "Query Result Presenter" do
-    def setup
+    setup do
       @result = [
         {"column1" => "row1", "column2" => "row1"},
         {"column1" => "row2", "column2" => "row2"},
@@ -58,25 +58,28 @@ class QueryResultPresenterTest < Test::Unit::TestCase
 
     context "method_missing" do
       should "delegate to the underlying result if method is missing" do
-
+        @result.expects(:to_a)
+        @presenter.to_a
       end
 
       should "raise an error when calling an unknown method" do
-
+        assert_raise NoMethodError do
+          @presenter.not_a_method
+        end
       end
     end
 
     context "respond_to?" do
       should "be true for presenter methods" do
-
+        assert @presenter.respond_to?(:headers)
       end
 
       should "be true for underlying methods" do
-
+        assert @presenter.respond_to?(:to_a)
       end
 
       should "be false for unknown methods" do
-
+        refute @presenter.respond_to?(:not_a_method)
       end
     end
 
