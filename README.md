@@ -11,7 +11,7 @@ This code adds functionality to the results of these
 database adapters, and simplifies some common things you need for
 query reporting, especially online.
 
-This gem uses the presenter
+This gem uses the decorator
 pattern, so it adds some additional methods and delegates to the
 original result for anything it doesn't recognize.
 
