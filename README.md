@@ -2,7 +2,16 @@
 
 [![Code Climate](https://codeclimate.com/github/paperlesspost/query_result_presenter.png)](https://codeclimate.com/github/paperlesspost/query_result_presenter)
 
-This gem helps you work with query results. It uses the presenter
+This is a gem to deal with a variety of query results from the
+various database adapters that run in ruby. Most of them (pg, mysql2)
+natively return a query result in the form of an enumerable, with each
+result being a hash with the column name and row value of the query.
+
+This code adds functionality to the results of these
+database adapters, and simplifies some common things you need for
+query reporting, especially online.
+
+This gem uses the presenter
 pattern, so it adds some additional methods and delegates to the
 original result for anything it doesn't recognize.
 
@@ -22,7 +31,7 @@ Or install it yourself as:
 
 ## Usage
 
-All you need to do is call `QueryResultPresenter.new(result here)`
+All you need to do is call `QueryResultPresenter::Presenter.new(result here)`
 on any query result returned as a hash, and you will get these
 additional methods. If you call an unrecognized method, it will 
 call that method on the original result object.
