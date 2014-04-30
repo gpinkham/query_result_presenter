@@ -34,11 +34,25 @@ Or install it yourself as:
 All you need to do is call `QueryResultPresenter::Presenter.new(result here)`
 on any query result returned as a hash, and you will get these
 additional methods. If you call an unrecognized method, it will 
-call that method on the original result object.
+call that method on the original result object using `method_missing`.
 
-Note, this will not work for query results
-returned as an array, which happens with some libraries, although you
-can normally change that functionality.
+This project started as `PgResultPresenter` to be used with a postgres
+database that returnd `PgResult` objects to which we added 
+functionality. However, since we're open sourcing our BI app, and people
+will likely use non-postgres db's, this gem is to extend that
+functionality beyond just postgres.
+
+So, the `(result here)` that you load into the presenter will be a result
+from `pg`, `mysql2`, or another db connection library. The results can 
+be different types /
+classes, but most conform to the same format which allows this gem to
+work.
+
+The format needed for this to work is for results to be returned as
+hashes, this will not work for query results
+returned as an array. Most libraries return results as hashes by
+default, or you are able to change the configuration in the library to
+return the result as a hash.
 
 The additional functions you get are:
 
